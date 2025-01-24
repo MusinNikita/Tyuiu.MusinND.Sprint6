@@ -28,7 +28,7 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
 
             // Сортируем строки по значениям в четвёртом столбце с сохранением исходного порядка для одинаковых значений
             var sortedRows = rowsArray
-                .Select((row, index) => new { Row = row, Index = index }) // Сохраняем индекс для стабильности
+                .Select((row, index) => new { Row = row, Index = index })
                 .OrderBy(item => item.Row[3]) // Сортировка по четвёртому столбцу
                 .ThenBy(item => item.Index)  // Сохранение порядка при одинаковых значениях
                 .Select(item => item.Row)
