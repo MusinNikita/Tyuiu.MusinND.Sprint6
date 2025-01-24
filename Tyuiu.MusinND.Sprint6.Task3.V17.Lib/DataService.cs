@@ -9,10 +9,6 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
 
-            // Проверка на размер 5x5
-            if (rows != 5 || cols != 5)
-                throw new ArgumentException("Массив должен быть размером 5x5.");
-
             // Копируем строки для сортировки
             var rowsArray = new int[rows][];
             for (int i = 0; i < rows; i++)
@@ -24,7 +20,7 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
                 }
             }
 
-            // Сортируем строки по 4-му столбцу с учётом стабильности
+            // Сортируем строки по 4-му столбцу с учётом стабильности сортировки
             Array.Sort(rowsArray, (row1, row2) => row1[3].CompareTo(row2[3]));
 
             // Преобразуем обратно в двумерный массив
