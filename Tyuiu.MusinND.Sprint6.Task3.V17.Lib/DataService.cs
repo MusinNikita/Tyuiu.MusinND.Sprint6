@@ -6,6 +6,8 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
     {
         public int[,] Calculate(int[,] matrix)
         {
+            public int[,] Calculate(int[,] matrix)
+        {
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
 
@@ -15,21 +17,25 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
 
             // Преобразуем двумерный массив в массив строк с индексами
             var indexedRows = Enumerable.Range(0, rows)
-                .Select(i => (Index: i, Row: Enumerable.Range(0, cols).Select(j => matrix[i, j]).ToArray()))
+                .Select(i => new { Index = i, Row = Enumerable.Range(0, cols).Select(j => matrix[i, j]).ToArray() })
                 .ToArray();
 
-            // Сортируем строки по четвёртому столбцу, сохраняя исходный порядок для одинаковых значений
+            // Сортируем строки по четвёртому столбцу
             var sortedRows = indexedRows
-                .OrderBy(item => item.Row[3]) // Сортируем по четвёртому столбцу
-                .ThenBy(item => item.Index)  // Сохраняем порядок строк
-                .Select(item => item.Row)
+                .OrderBy(row => row.Row[3]) // Сортировка по четвёртому столбцу
+                .ThenBy(row => row.Index)  // Сохранение исходного порядка строк
+                .Select(row => row.Row)
                 .ToArray();
 
             // Преобразуем обратно в двумерный массив
             int[,] result = new int[rows, cols];
             for (int i = 0; i < rows; i++)
+            {
                 for (int j = 0; j < cols; j++)
+                {
                     result[i, j] = sortedRows[i][j];
+                }
+            }
 
             return result;
         }
