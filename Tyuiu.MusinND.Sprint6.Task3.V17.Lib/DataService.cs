@@ -13,19 +13,19 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
             if (rows != 5 || cols != 5)
                 throw new ArgumentException("Массив должен быть размером 5x5.");
 
-            // Копируем строки для сортировки
-            var rowsArray = new int[rows][];
+            // Создаём список строк, чтобы сохранить стабильность сортировки
+            var indexedRows = new (int Index, int[] Row)[rows];
             for (int i = 0; i < rows; i++)
             {
-                rowsArray[i] = new int[cols];
+                indexedRows[i] = (i, new int[cols]);
                 for (int j = 0; j < cols; j++)
                 {
-                    rowsArray[i][j] = matrix[i, j];
+                    indexedRows[i].Row[j] = matrix[i, j];
                 }
             }
 
-            // Сортировка строк по 4-му столбцу с учётом стабильности
-            Array.Sort(rowsArray, (row1, row2) => row1[3].CompareTo(row2[3]));
+            // Сортируем по 4-му столбцу с учётом стабильности
+            Array.Sort(indexedRows, (x, y) => x.Row[3].CompareTo(y.Row[3]));
 
             // Преобразуем обратно в двумерный массив
             int[,] result = new int[rows, cols];
@@ -33,7 +33,7 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    result[i, j] = rowsArray[i][j];
+                    result[i, j] = indexedRows[i].Row[j];
                 }
             }
 
