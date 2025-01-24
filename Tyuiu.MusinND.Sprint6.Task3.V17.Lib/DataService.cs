@@ -9,7 +9,7 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
 
-            // Копируем строки для сортировки
+            // Создаем список строк для сортировки
             var rowsArray = new int[rows][];
             for (int i = 0; i < rows; i++)
             {
@@ -20,7 +20,7 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
                 }
             }
 
-            // Сортируем строки по 4-му столбцу
+            // Сортируем строки по 4-му столбцу, но с сохранением порядка для одинаковых значений
             Array.Sort(rowsArray, (row1, row2) => row1[3].CompareTo(row2[3]));
 
             // Преобразуем обратно в двумерный массив
