@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tyuiu.MusinND.Sprint6.Task0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tyuiu.MusinND.Sprint6.Task0.V29.Test", "Tyuiu.MusinND.Sprint6.Task0.V29.Test\Tyuiu.MusinND.Sprint6.Task0.V29.Test.csproj", "{6679C949-B566-4E38-B20F-62540AD39C53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tyuiu.MusinND.Sprint6.Task0.V29", "Tyuiu.MusinND.Sprint6.Task0.V29\Tyuiu.MusinND.Sprint6.Task0.V29.csproj", "{84E32FAF-F71B-4E5D-8114-E4A5C4C81471}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{6679C949-B566-4E38-B20F-62540AD39C53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6679C949-B566-4E38-B20F-62540AD39C53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6679C949-B566-4E38-B20F-62540AD39C53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84E32FAF-F71B-4E5D-8114-E4A5C4C81471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84E32FAF-F71B-4E5D-8114-E4A5C4C81471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84E32FAF-F71B-4E5D-8114-E4A5C4C81471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84E32FAF-F71B-4E5D-8114-E4A5C4C81471}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +36,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{20B559E6-2728-4501-9A4A-820D00FCB008} = {1499879A-9626-447F-B38B-78768D39E9AD}
 		{6679C949-B566-4E38-B20F-62540AD39C53} = {1499879A-9626-447F-B38B-78768D39E9AD}
+		{84E32FAF-F71B-4E5D-8114-E4A5C4C81471} = {1499879A-9626-447F-B38B-78768D39E9AD}
 	EndGlobalSection
 EndGlobal
