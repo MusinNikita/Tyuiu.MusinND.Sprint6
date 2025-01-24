@@ -9,35 +9,35 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
 
-            // Проверка размера массива (должен быть 5x5)
+            // Проверка на размер 5x5
             if (rows != 5 || cols != 5)
                 throw new ArgumentException("Массив должен быть размером 5x5.");
 
-            // Копируем строки для сортировки
-            int[][] rowsArray = new int[rows][];
+            // Копируем строки в список с их индексами для стабильной сортировки
+            var indexedRows = new (int Index, int[] Row)[rows];
             for (int i = 0; i < rows; i++)
             {
-                rowsArray[i] = new int[cols];
+                indexedRows[i] = (i, new int[cols]);
                 for (int j = 0; j < cols; j++)
                 {
-                    rowsArray[i][j] = matrix[i, j];
+                    indexedRows[i].Row[j] = matrix[i, j];
                 }
             }
 
-            // Сортировка строк по значению четвёртого столбца
-            Array.Sort(rowsArray, (row1, row2) => row1[3].CompareTo(row2[3]));
+            // Сортировка строк по значению в 4-м столбце
+            Array.Sort(indexedRows, (x, y) => x.Row[3].CompareTo(y.Row[3]));
 
             // Преобразуем обратно в двумерный массив
-            int[,] sortedMatrix = new int[rows, cols];
+            int[,] result = new int[rows, cols];
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    sortedMatrix[i, j] = rowsArray[i][j];
+                    result[i, j] = indexedRows[i].Row[j];
                 }
             }
 
-            return sortedMatrix;
+            return result;
         }
     }
 }
