@@ -6,34 +6,33 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
     {
         public int[,] Calculate(int[,] matrix)
         {
-            int rows = matrix.GetLength(0);
-            int cols = matrix.GetLength(1);
+            int rows = matrix.GetLength(0); // Количество строк
+            int cols = matrix.GetLength(1); // Количество столбцов
 
-            // Создаем список строк для сортировки
-            var rowsArray = new int[rows][];
+            // Проходим по каждой строке
             for (int i = 0; i < rows; i++)
             {
-                rowsArray[i] = new int[cols];
+                // Создаем временный массив для строки
+                int[] row = new int[cols];
+
+                // Копируем элементы строки в массив
                 for (int j = 0; j < cols; j++)
                 {
-                    rowsArray[i][j] = matrix[i, j];
+                    row[j] = matrix[i, j];
+                }
+
+                // Сортируем временный массив строки
+                Array.Sort(row);
+
+                // Записываем отсортированную строку обратно в матрицу
+                for (int j = 0; j < cols; j++)
+                {
+                    matrix[i, j] = row[j];
                 }
             }
 
-            // Сортируем строки по 4-му столбцу, но с сохранением порядка для одинаковых значений
-            Array.Sort(rowsArray, (row1, row2) => row1[3].CompareTo(row2[3]));
-
-            // Преобразуем обратно в двумерный массив
-            int[,] result = new int[rows, cols];
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    result[i, j] = rowsArray[i][j];
-                }
-            }
-
-            return result;
+            // Возвращаем отсортированную матрицу
+            return matrix;
         }
     }
 }
