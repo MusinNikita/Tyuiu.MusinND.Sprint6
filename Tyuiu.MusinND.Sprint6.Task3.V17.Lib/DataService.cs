@@ -6,29 +6,28 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
     {
         public int[,] Calculate(int[,] matrix)
         {
-            int rows = matrix.GetLength(0); // Количество строк
-            int cols = matrix.GetLength(1); // Количество столбцов
-
-            // Проходим по каждой строке
-            for (int i = 0; i < rows; i++)
+            // Проверяем, что матрица имеет правильный размер 5x5
+            if (matrix.GetLength(0) != 5 || matrix.GetLength(1) != 5)
             {
-                // Создаем временный массив для строки
-                int[] row = new int[cols];
+                throw new ArgumentException("Матрица должна быть размером 5x5.");
+            }
 
-                // Копируем элементы строки в массив
-                for (int j = 0; j < cols; j++)
-                {
-                    row[j] = matrix[i, j];
-                }
+            // Массив для хранения значений 3-го столбца
+            int[] column3 = new int[5];
 
-                // Сортируем временный массив строки
-                Array.Sort(row);
+            // Извлекаем 3-й столбец
+            for (int i = 0; i < 5; i++)
+            {
+                column3[i] = matrix[i, 3];
+            }
 
-                // Записываем отсортированную строку обратно в матрицу
-                for (int j = 0; j < cols; j++)
-                {
-                    matrix[i, j] = row[j];
-                }
+            // Сортируем 3-й столбец по возрастанию
+            Array.Sort(column3);
+
+            // Вставляем отсортированные значения обратно в 3-й столбец
+            for (int i = 0; i < 5; i++)
+            {
+                matrix[i, 3] = column3[i];
             }
 
             // Возвращаем отсортированную матрицу
