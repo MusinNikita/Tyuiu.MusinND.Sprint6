@@ -4,8 +4,6 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
 {
     public class DataService : ISprint6Task3V17
     {
-        public int[,] Calculate(int[,] matrix)
-        {
             public int[,] Calculate(int[,] matrix)
         {
             int rows = matrix.GetLength(0);
