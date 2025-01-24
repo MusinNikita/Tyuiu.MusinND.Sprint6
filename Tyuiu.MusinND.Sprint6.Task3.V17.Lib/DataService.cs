@@ -24,7 +24,7 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
                 }
             }
 
-            // Сортировка строк по значению в 4-м столбце
+            // Сортировка строк по 4-му столбцу с учётом стабильности
             Array.Sort(indexedRows, (x, y) => x.Row[3].CompareTo(y.Row[3]));
 
             // Преобразуем обратно в двумерный массив
