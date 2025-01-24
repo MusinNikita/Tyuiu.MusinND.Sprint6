@@ -30,6 +30,9 @@ namespace Tyuiu.MusinND.Sprint6.Task1.V5.Lib
                     fx = 0;
                 }
 
+                // Округляем значение до двух знаков после запятой
+                fx = Math.Round(fx, 2);
+
                 // Добавляем результат в список
                 results.Add(fx);
             }
