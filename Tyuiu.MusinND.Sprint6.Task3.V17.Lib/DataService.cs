@@ -6,45 +6,26 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
     {
         public int[,] Calculate(int[,] matrix)
         {
-            // Получаем количество строк и столбцов
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
 
+            // Проверка размера массива
             if (rows != 5 || cols != 5)
-            {
                 throw new ArgumentException("Массив должен быть размером 5x5.");
-            }
 
-            // Преобразуем двумерный массив в массив строк
-            int[][] rowsArray = new int[rows][];
-            for (int i = 0; i < rows; i++)
-            {
-                rowsArray[i] = new int[cols];
-                for (int j = 0; j < cols; j++)
-                {
-                    rowsArray[i][j] = matrix[i, j];
-                }
-            }
-
-            // Сортируем строки по значениям в четвёртом столбце с сохранением исходного порядка для одинаковых значений
-            var sortedRows = rowsArray
-                .Select((row, index) => new { Row = row, Index = index })
-                .OrderBy(item => item.Row[3]) // Сортировка по четвёртому столбцу
-                .ThenBy(item => item.Index)  // Сохранение порядка при одинаковых значениях
-                .Select(item => item.Row)
+            // Преобразуем двумерный массив в массив строк для сортировки
+            var sortedRows = Enumerable.Range(0, rows)
+                .Select(i => Enumerable.Range(0, cols).Select(j => matrix[i, j]).ToArray())
+                .OrderBy(row => row[3]) // Сортируем по четвёртому столбцу
                 .ToArray();
 
-            // Преобразуем обратно в двумерный массив
-            int[,] sortedMatrix = new int[rows, cols];
+            // Возвращаем отсортированный массив
+            int[,] result = new int[rows, cols];
             for (int i = 0; i < rows; i++)
-            {
                 for (int j = 0; j < cols; j++)
-                {
-                    sortedMatrix[i, j] = sortedRows[i][j];
-                }
-            }
+                    result[i, j] = sortedRows[i][j];
 
-            return sortedMatrix;
+            return result;
         }
     }
 }
