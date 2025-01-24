@@ -26,8 +26,13 @@ namespace Tyuiu.MusinND.Sprint6.Task3.V17.Lib
                 }
             }
 
-            // Сортируем строки по значениям в четвёртом столбце (индекс 3)
-            var sortedRows = rowsArray.OrderBy(row => row[3]).ToArray();
+            // Сортируем строки по значениям в четвёртом столбце с сохранением исходного порядка для одинаковых значений
+            var sortedRows = rowsArray
+                .Select((row, index) => new { Row = row, Index = index }) // Сохраняем индекс для стабильности
+                .OrderBy(item => item.Row[3]) // Сортировка по четвёртому столбцу
+                .ThenBy(item => item.Index)  // Сохранение порядка при одинаковых значениях
+                .Select(item => item.Row)
+                .ToArray();
 
             // Преобразуем обратно в двумерный массив
             int[,] sortedMatrix = new int[rows, cols];
